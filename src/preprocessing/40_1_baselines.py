@@ -1,9 +1,8 @@
 import numpy as np
 import pandas as pd
 from sklearn import linear_model
-import sys
-sys.path.insert(0, '../')
-from dataIndices import *
+
+from src.data_indices import *
 
 def perfMetrics(err, truth):
     mae = np.mean(np.abs(err))
@@ -14,9 +13,9 @@ def perfMetrics(err, truth):
 
     return (mape, mae, rmse)
 
-# cx1_links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx1.npy')
-cx2_links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx2.npy')
-spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
+# cx1_links = np.load('src/preprocessing/data/linkIds_cx1.npy')
+cx2_links = np.load('src/preprocessing/data/linkIds_cx2.npy')
+spd = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
 
 # (train_time, val_time, test_time, train_links, val_links, test_links) = datasetIdx(821, cx1_links, 50000, 10000, 10000)
 (train_time, val_time, test_time, train_links, val_links, test_links) = datasetIdx(821, cx2_links, 50000, 10000, 10000)

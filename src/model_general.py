@@ -4,6 +4,8 @@ import pandas as pd
 import tensorflow as tf
 import time as tt
 import numpy as np
+from wot.interface import *
+
 
 def param_colnames():
     return ['forecasting_horizon', 'data_type', 'seq_len', 'img_size',
@@ -66,11 +68,16 @@ class EpochHistory(Callback):
 
         self.perf.loc[epoch] = [epoch, val[0], val[1], val[2], test[0], test[1], test[2], tt.time() - self.st]
         # print self.model.evaluate(self.trainimage, self.lossY, verbose=0) # loss..
+        run_time = tt.time() - self.st
+        cur_loss = self.losses[-1]
         print('### EPOCH %i / TIME %.1f ### loss %.3f // validation %.3f %.3f %.3f // test %.3f %.3f %.3f' %(
-            epoch, tt.time() - self.st, self.losses[-1], val[0], val[1], val[2], test[0], test[1], test[2]))
-
+            epoch, run_time, cur_loss, val[0], val[1], val[2], test[0], test[1], test[2]))
+        
+        update_working_result(epoch, cur_loss, run_time)
         return
 
     def on_train_end(self, logs={}):
         self.perf['loss'] = self.losses
-        self.perf.to_csv('/home/keun/PycharmProjects/trafficPrediction/log/' + str(self.log_filepath) + '.csv')
+        self.perf.to_csv('log/' + str(self.log_filepath) + '.csv')
+        
+        stop_working_job() 

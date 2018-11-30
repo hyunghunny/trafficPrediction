@@ -16,9 +16,9 @@ for m in month:
     f = str(year) + str(m) + '.csv'
     print f
     try:
-        newdata = pd.read_csv('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/rawdata/speed/' + f, encoding='UTF8', error_bad_lines=False, index_col=False)
+        newdata = pd.read_csv('src/preprocessing/rawdata/speed/' + f, encoding='UTF8', error_bad_lines=False, index_col=False)
     except UnicodeDecodeError:
-        newdata = pd.read_csv('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/rawdata/speed/' + f, encoding='CP949', error_bad_lines=False, index_col=False)
+        newdata = pd.read_csv('src/preprocessing/rawdata/speed/' + f, encoding='CP949', error_bad_lines=False, index_col=False)
 
     data = pd.concat([data, newdata])
     print data.shape
@@ -51,4 +51,4 @@ for l in links:
 
 # print len(links)
 # print len(spd)
-np.save('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_' + str(year) + '.npy', spd)
+np.save('src/preprocessing/data/spd_' + str(year) + '.npy', spd)

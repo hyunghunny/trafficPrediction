@@ -3,6 +3,7 @@ from keras.engine.topology import Layer
 from keras.layers import LSTM, InputLayer, Dense, Input, Flatten, concatenate, Reshape, MaxPooling2D, Activation, Dropout, MaxPooling3D, Conv3D
 from keras.layers.normalization import BatchNormalization
 from keras import backend as K
+
 import tensorflow as tf
 
 class Local_Seq_Conv(Layer):

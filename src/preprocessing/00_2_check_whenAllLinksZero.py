@@ -11,13 +11,13 @@ def checkWhenAllZeros(speedDict, links):
     check = np.mean(np.array(data), axis=0)
     return np.where(check == 0)[0]
 
-# spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_2015.npy').item()
-# spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_2016.npy').item()
+# spd = np.load('src/preprocessing/data/spd_2015.npy').item()
+# spd = np.load('src/preprocessing/data/spd_2016.npy').item()
 
 for year in [2014, 2015, 2016, 2017, 2018]:
     print '######'
     print year
-    spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_' + str(year) + '.npy').item()
+    spd = np.load('src/preprocessing/data/spd_' + str(year) + '.npy').item()
     idx = checkWhenAllZeros(spd, links)
     print len(idx)
 

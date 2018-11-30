@@ -1,8 +1,8 @@
-from dataIndices import *
+from src.data_indices import *
 import pandas as pd
 
 def loadDataset(n_data, spdDict, times, links, forecasting_horizon, seq_len, temp_type='default'):
-    spdDict_raw = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
+    spdDict_raw = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
 
     result_x = []
     result_y = []
@@ -23,11 +23,11 @@ def generateTimeSeriesSet(data_type, forecasting_horizon, seq_len, spdDict,
                           n_train=50000, n_val=10000, n_test=10000, seed=821, temp_type='default'):
 
     if data_type < 20:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy')
     elif data_type < 30:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
     else:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
 
     st = tt.time()
     print "######################################################################################################"
@@ -51,11 +51,11 @@ def findSpdLimits(links, spdLimitArray):
 
 def generateSpdLimits(data_type, normalization_opt, n_train=50000, n_val=10000, n_test=10000, seed=821):
     if data_type < 20:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy')
     elif data_type < 30:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
     else:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
 
     (train_time, val_time, test_time, train_links, val_links, test_links) = datasetIdx(seed, links, n_train, n_val, n_test)
 
@@ -69,7 +69,7 @@ def generateSpdLimits(data_type, normalization_opt, n_train=50000, n_val=10000, 
             valLimits = [143.0] * n_val
             testLimits = [143.0] * n_test
     elif normalization_opt > 0:
-        spdLimit = pd.read_csv('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/rawdata/link_information.csv')
+        spdLimit = pd.read_csv('src/preprocessing/rawdata/link_information.csv')
 
         trainLimits = findSpdLimits(train_links, spdLimit)
         valLimits = findSpdLimits(val_links, spdLimit)

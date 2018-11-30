@@ -1,26 +1,26 @@
-from dataIndices import *
+from src.data_indices import *
 
 def mappingMatrix(data_type, img_size, targetLayer, traj_opt = 'all', excludeSelf = False):
-    trajDict = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/' + str(traj_opt) + 'Traj.npy').item()
+    trajDict = np.load('src/preprocessing/data/' + str(traj_opt) + 'Traj.npy').item()
 
     if data_type >= 30:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
     elif data_type >= 20:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
     else:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy')
 
     coords = datasetCoord(links, trajDict)
     if data_type == 11:
-        layerIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_hw_R' + str(int((img_size-1)/2)) + '.npy').item()
+        layerIds = np.load('src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_hw_R' + str(int((img_size-1)/2)) + '.npy').item()
     elif data_type == 21:
-        layerIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_cx1_R' + str(int((img_size-1)/2)) + '.npy').item()
+        layerIds = np.load('src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_cx1_R' + str(int((img_size-1)/2)) + '.npy').item()
     elif data_type == 31:
-        layerIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_cx2_R' + str(int((img_size - 1) / 2)) + '.npy').item()
+        layerIds = np.load('src/preprocessing/data/localIds/localIds_' + str(traj_opt) + '_cx2_R' + str(int((img_size - 1) / 2)) + '.npy').item()
     elif data_type % 10 == 2:
-        layerIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/layerIds_' + str(traj_opt) + '/' + str(int(data_type / 10)) + '3/layerIds_img' + str(img_size) + '.npy').item()
+        layerIds = np.load('src/preprocessing/data/layerIds_' + str(traj_opt) + '/' + str(int(data_type / 10)) + '3/layerIds_img' + str(img_size) + '.npy').item()
     else:
-        layerIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/layerIds_' + str(traj_opt) + '/' + str(data_type) + '/layerIds_img' + str(img_size) + '.npy').item()
+        layerIds = np.load('src/preprocessing/data/layerIds_' + str(traj_opt) + '/' + str(data_type) + '/layerIds_img' + str(img_size) + '.npy').item()
 
     result = {}
     target = 0
@@ -136,19 +136,19 @@ def loadLabels(n_data, spdIds, spdArray, spdDict_raw, times, links):
 
 def loadSpdIdsAndRawDictAndLinks(normalization_opt, data_type):
     if normalization_opt == 'raw':
-        spdIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/all_links_afterFiltering2.npy')
+        spdIds = np.load('src/preprocessing/data/all_links_afterFiltering2.npy')
     else:
-        spdIds = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spdIds_spdLimitNorm_' + str(normalization_opt) + '.npy')
+        spdIds = np.load('src/preprocessing/data/spdIds_spdLimitNorm_' + str(normalization_opt) + '.npy')
 
     spdDict_raw = np.load(
-        '/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
+        'src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
 
     if data_type < 20:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy')
     elif data_type < 30:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
     else:
-        links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
 
     return (spdIds, spdDict_raw, links)
 

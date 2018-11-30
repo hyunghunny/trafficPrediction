@@ -1,9 +1,12 @@
-from model_blocks import *
-from model_general import *
-from generate_lstm import *
-from generate_images import *
 from keras.models import Model
 from keras.optimizers import Adam
+
+from src.model_blocks import *
+from src.model_general import *
+from src.generate_lstm import *
+from src.generate_images import *
+
+
 import warnings
 warnings.filterwarnings("ignore")
 

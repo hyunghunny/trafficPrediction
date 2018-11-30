@@ -10,7 +10,7 @@ links = np.load('data/all_links.npy')
 
 del_links1 = []
 del_links2 = []
-spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
+spd = np.load('src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
 
 del_links = []
 result = []

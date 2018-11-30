@@ -3,8 +3,8 @@ import pandas as pd
 import time
 import matplotlib.pyplot as plt
 
-spd = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
-links = np.load('/home/keun/PycharmProjects/trafficPrediction/src/preprocessing/data/all_links_afterFiltering.npy')
+spd = np.load('src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
+links = np.load('src/preprocessing/data/all_links_afterFiltering.npy')
 print len(links)
 
 # del_links = []
