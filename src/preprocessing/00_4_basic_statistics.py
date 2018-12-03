@@ -2,8 +2,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-spd = np.load('data/spd_interpolated.npy').item()
-links = np.load('data/all_links_afterFiltering2.npy')
+spd = np.load('data/spd_interpolated.npy', encoding='bytes').item()
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
 
 times = pd.date_range(start='1/1/2014', end='11/1/2018', closed='left', freq='1H')
 

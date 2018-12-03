@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-links = np.load('data/all_links_afterFiltering2.npy')
-spd = np.load('data/spd_interpolated_ignoreErrTimes.npy').item()
-spd_array = np.load('data/spdArray.npy')
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
+spd = np.load('data/spd_interpolated_ignoreErrTimes.npy', encoding='bytes').item()
+spd_array = np.load('data/spdArray.npy', encoding='bytes')
 coords = pd.read_csv('rawdata/LINK_VERTEX_seoulonly.csv', index_col=0)
 coords = coords[coords['LINK_ID'].isin(links)]
 info = pd.read_csv('rawdata/link_information.csv')

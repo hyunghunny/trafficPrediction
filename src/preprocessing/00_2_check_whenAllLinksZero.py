@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-links = np.load('data/all_links.npy')
+links = np.load('data/all_links.npy', encoding='bytes')
 # print( len(links))
 
 def checkWhenAllZeros(speedDict, links):
@@ -17,7 +17,7 @@ def checkWhenAllZeros(speedDict, links):
 for year in [2014, 2015, 2016, 2017, 2018]:
     print( '######')
     print( year)
-    spd = np.load('src/preprocessing/data/spd_' + str(year) + '.npy').item()
+    spd = np.load('src/preprocessing/data/spd_' + str(year) + '.npy', encoding='bytes').item()
     idx = checkWhenAllZeros(spd, links)
     print( len(idx))
 

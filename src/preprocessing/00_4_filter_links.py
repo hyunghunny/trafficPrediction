@@ -6,11 +6,11 @@ link filtering based on speed data
 - criteria 2: More than 50% 0s per year.
 '''
 
-links = np.load('data/all_links.npy')
+links = np.load('data/all_links.npy', encoding='bytes')
 
 del_links1 = []
 del_links2 = []
-spd = np.load('src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
+spd = np.load('src/preprocessing/data/spd_augmented_minusWhenAllZero.npy', encoding='bytes').item()
 
 del_links = []
 result = []

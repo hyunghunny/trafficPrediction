@@ -59,11 +59,11 @@ def train_model(exp_type, num_trials, index, hyperparams,
     normalization_opt = str(hyperparams['normalization_opt'])
 
     if normalization_opt == 'raw':
-        spdDict = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
-        spdArray = np.load('src/preprocessing/data/spdArray.npy')
+        spdDict = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy', encoding='bytes').item()
+        spdArray = np.load('src/preprocessing/data/spdArray.npy', encoding='bytes')
     else:
-        spdDict = np.load('src/preprocessing/data/spdDict_spdLimitNorm_' + str(normalization_opt) + '.npy').item()
-        spdArray = np.load('src/preprocessing/data/spdArray_spdLimitNorm_' + str(normalization_opt) + '.npy')
+        spdDict = np.load('src/preprocessing/data/spdDict_spdLimitNorm_' + str(normalization_opt) + '.npy', encoding='bytes').item()
+        spdArray = np.load('src/preprocessing/data/spdArray_spdLimitNorm_' + str(normalization_opt) + '.npy', encoding='bytes')
 
     for trial_no in range(num_trials):
         no_exp = exp_type + '/' + str(forecasting_horizon) + 'hours_dataType' + str(data_type) + '_normalization' + str(normalization_opt) + '_traj' + str(traj_opt) + \
@@ -71,7 +71,7 @@ def train_model(exp_type, num_trials, index, hyperparams,
 
         print('-----------------------------------------------------------------------------')
         print(no_exp)
-        print(str(float(index) + 1) + ' / ' + str(float(models.shape[0])) + ' / trial : ' + str(trial_no))
+        print(str(float(index) + 1) + ' / ' + str(len(hyperparams)) + ' / trial : ' + str(trial_no))
         print('data_type: %i, seq_len: %i, img_size: %i, normalization: %s, traj: %s' %(data_type, seq_len, img_size, normalization_opt, traj_opt))
         print('-----------------------------------------------------------------------------')
 
@@ -108,7 +108,7 @@ def train_model(exp_type, num_trials, index, hyperparams,
 def main(exp_name):
     
     num_trials = 1
-    # read hyperparamters from CSV
+    # read hyperparameters from CSV
     models = pd.read_csv('model/' + str(exp_name) + '.csv')
 
     for index, hpv in models.iterrows():
@@ -117,7 +117,7 @@ def main(exp_name):
 
 if __name__ == '__main__':
 
-    exp_name = 'test_datasize'
+    exp_name = 'test_epoch2'
     gpu_id = 1
     if not os.path.exists('log/' + exp_name):
         os.makedirs('log/' + exp_name)
@@ -125,4 +125,4 @@ if __name__ == '__main__':
     os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
 
-    main(exp_name, gpu_id)
+    main(exp_name)

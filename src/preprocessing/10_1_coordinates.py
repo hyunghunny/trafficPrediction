@@ -9,7 +9,7 @@ coord = pd.read_csv('rawdata/LINK_VERTEX_seoulonly.csv', index_col=0)
 # cx1_links = np.load('data/linkIds_cx1.npy')
 # cx2_links = np.load('data/linkIds_cx2.npy')
 # links = np.unique(cx1_links + cx2_links)
-links = np.load('data/all_links_afterFiltering2.npy')
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
 coord = coord[coord['LINK_ID'].isin(links)]
 
 min_x = min(coord['GRS80TM_X'])

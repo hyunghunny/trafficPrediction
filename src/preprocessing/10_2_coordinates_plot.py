@@ -6,10 +6,10 @@ import time as tt
 
 coord = pd.read_csv('rawdata/LINK_VERTEX_seoulonly.csv', index_col=0)
 
-cx1_links = np.load('data/linkIds_cx1.npy')
-cx2_links = np.load('data/linkIds_cx2.npy')
+cx1_links = np.load('data/linkIds_cx1.npy', encoding='bytes')
+cx2_links = np.load('data/linkIds_cx2.npy', encoding='bytes')
 # links = np.unique(cx1_links + cx2_links)
-links = np.load('data/all_links_afterFiltering2.npy')
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
 coord = coord[coord['LINK_ID'].isin(links)]
 
 min_x = min(coord['GRS80TM_X'])
@@ -22,8 +22,8 @@ coord['y'] = ((coord['GRS80TM_Y'] - min_y) / 100).astype(int)
 # print max(coord['x']) #340
 # print max(coord['y']) #275
 
-knownTraj = np.load('data/knownTraj.npy').item()
-allTraj = np.load('data/allTraj.npy').item()
+knownTraj = np.load('data/knownTraj.npy', encoding='bytes').item()
+allTraj = np.load('data/allTraj.npy', encoding='bytes').item()
 
 def plotKnownAndConnectedCoords_scatter(links, knownCoordDF, allTraj, filename):
     plt.figure(figsize=(20, 20))

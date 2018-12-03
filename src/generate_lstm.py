@@ -2,7 +2,7 @@ from src.data_indices import *
 import pandas as pd
 
 def loadDataset(n_data, spdDict, times, links, forecasting_horizon, seq_len, temp_type='default'):
-    spdDict_raw = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item()
+    spdDict_raw = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy', encoding='bytes').item()
 
     result_x = []
     result_y = []
@@ -23,11 +23,11 @@ def generateTimeSeriesSet(data_type, forecasting_horizon, seq_len, spdDict,
                           n_train=50000, n_val=10000, n_test=10000, seed=821, temp_type='default'):
 
     if data_type < 20:
-        links = np.load('src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy', encoding='bytes')
     elif data_type < 30:
-        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy', encoding='bytes')
     else:
-        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy', encoding='bytes')
 
     st = tt.time()
     print("######################################################################################################")
@@ -51,15 +51,15 @@ def findSpdLimits(links, spdLimitArray):
 
 def generateSpdLimits(data_type, normalization_opt, n_train=50000, n_val=10000, n_test=10000, seed=821):
     if data_type < 20:
-        links = np.load('src/preprocessing/data/linkIds_hw.npy')
+        links = np.load('src/preprocessing/data/linkIds_hw.npy', encoding='bytes')
     elif data_type < 30:
-        links = np.load('src/preprocessing/data/linkIds_cx1.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx1.npy', encoding='bytes')
     else:
-        links = np.load('src/preprocessing/data/linkIds_cx2.npy')
+        links = np.load('src/preprocessing/data/linkIds_cx2.npy', encoding='bytes')
 
     (train_time, val_time, test_time, train_links, val_links, test_links) = datasetIdx(seed, links, n_train, n_val, n_test)
 
-    if normalization_opt == 0:
+    if normalization_opt == 'raw': # XXX: originally, 0 is set here
         if data_type >= 30:
             trainLimits = [236.01] * n_train
             valLimits = [236.01] * n_val
@@ -68,16 +68,16 @@ def generateSpdLimits(data_type, normalization_opt, n_train=50000, n_val=10000, 
             trainLimits = [143.0] * n_train
             valLimits = [143.0] * n_val
             testLimits = [143.0] * n_test
-    elif normalization_opt > 0:
+    else: #originally elif normalization_opt > 0:
         spdLimit = pd.read_csv('src/preprocessing/rawdata/link_information.csv')
 
         trainLimits = findSpdLimits(train_links, spdLimit)
         valLimits = findSpdLimits(val_links, spdLimit)
         testLimits = findSpdLimits(test_links, spdLimit)
-    else:
-        trainLimits = None
-        valLimits = None
-        testLimits = None
+#    else:
+#        trainLimits = None
+#        valLimits = None
+#        testLimits = None
 
     return (trainLimits, valLimits, testLimits)
 

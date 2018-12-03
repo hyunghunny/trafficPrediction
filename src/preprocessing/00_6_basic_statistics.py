@@ -2,14 +2,14 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-links = np.load('data/all_links_afterFiltering2.npy')
-spd_bf = np.load('data/spd_augmented_minusWhenAllZero.npy').item()
-spd = np.load('data/spd_interpolated_ignoreErrTimes.npy').item()
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
+spd_bf = np.load('data/spd_augmented_minusWhenAllZero.npy', encoding='bytes').item()
+spd = np.load('data/spd_interpolated_ignoreErrTimes.npy', encoding='bytes').item()
 # spd_array = []
 # for l in links:
 #     spd_array.append(spd[l])
 # np.save('data/spdArray.npy', np.array(spd_array))
-spd_array = np.load('data/spdArray.npy')
+spd_array = np.load('data/spdArray.npy', encoding='bytes')
 coords = pd.read_csv('rawdata/LINK_VERTEX_seoulonly.csv', index_col=0)
 
 #before interpolation

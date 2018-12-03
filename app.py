@@ -23,6 +23,7 @@ def traffic_model_func(data_type, img_size, img_depth, forecasting_horizon,
     
     train_model('test_datasize', 1, 0, hyperparams) 
 
+
 def pack_args_to_dict(*args, cfg_file="hp_conf/traffic.json"):
     cfg = hp_cfg.read_config(cfg_file)
     if cfg != None:
@@ -37,8 +38,13 @@ def pack_args_to_dict(*args, cfg_file="hp_conf/traffic.json"):
             raise ValueError("Size of arguments {} is not equal to required parameters {}".format(len(args), len(cfg.param_order)))
     else:
         raise ValueError("Invalid range or value: {}".format(args))
+
+
 def main():    
     wait_job_request(traffic_model_func, True)
 
+
+
 if __name__ == '__main__':
     main()
+       

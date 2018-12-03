@@ -12,12 +12,12 @@ import pandas as pd
 #
 # np.save('data/all_links.npy', links)
 
-links = np.load('src/preprocessing/data/all_links.npy')
+links = np.load('src/preprocessing/data/all_links.npy', encoding='bytes')
 
 augSpd = {}
 for year in [2014, 2015, 2016, 2017, 2018]:
     print( year)
-    spd = np.load('src/preprocessing/data/spd_' + str(year) + '_minusWhenAllZero.npy').item()
+    spd = np.load('src/preprocessing/data/spd_' + str(year) + '_minusWhenAllZero.npy', encoding='bytes').item()
 
     # print len(spd[spd.keys()[0]]) #8760, 8760, 8784(2.29), 8760, 7296
     for l in links:

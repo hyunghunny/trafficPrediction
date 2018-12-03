@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 Speed interpolation: linear interpolation for the zero_valued cells
 '''
 
-spd = np.load('data/spd_augmented_minusWhenAllZero.npy').item()
-links = np.load('data/all_links_afterFiltering2.npy')
+spd = np.load('data/spd_augmented_minusWhenAllZero.npy', encoding='bytes').item()
+links = np.load('data/all_links_afterFiltering2.npy', encoding='bytes')
 times = pd.date_range(start='1/1/2014', end='11/1/2018', closed='left', freq='1H')
 
 # print spd[1000017200]

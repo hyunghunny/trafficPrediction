@@ -19,8 +19,8 @@ def datasetIdx(seed, links, n_train, n_val, n_test):
     np.random.seed(seed)
 
     # data path problem...........
-    train_indices = np.load('src/preprocessing/data/train_dateIdx.npy')
-    test_indices = np.load('src/preprocessing/data/test_dateIdx.npy')
+    train_indices = np.load('src/preprocessing/data/train_dateIdx.npy', encoding='bytes')
+    test_indices = np.load('src/preprocessing/data/test_dateIdx.npy', encoding='bytes')
 
     train_time = np.random.choice(train_indices, n_train, replace=True)
     val_time = np.random.choice(train_indices, n_val, replace=True)
