@@ -14,17 +14,17 @@ for m in month:
     if m < 10:
         m = str(0) + str(m)
     f = str(year) + str(m) + '.csv'
-    print f
+    print(f)
     try:
         newdata = pd.read_csv('src/preprocessing/rawdata/speed/' + f, encoding='UTF8', error_bad_lines=False, index_col=False)
     except UnicodeDecodeError:
         newdata = pd.read_csv('src/preprocessing/rawdata/speed/' + f, encoding='CP949', error_bad_lines=False, index_col=False)
 
     data = pd.concat([data, newdata])
-    print data.shape
-    print data.tail(1)
+    print(data.shape)
+    print(data.tail(1))
 
-# print data.columns
+# print(data.columns)
 if year == 2018:
     # year: 2018 (n_col=36)
     data.columns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 'length',
@@ -45,10 +45,10 @@ for l in links:
         try:
             spd.update({l: ldata.flatten().astype('float64')})
         except UnicodeEncodeError:
-            print l
-            print ldata.flatten()
+            print(l)
+            print(ldata.flatten())
             #1240028500
 
-# print len(links)
-# print len(spd)
+# print(len(links))
+# print(len(spd))
 np.save('src/preprocessing/data/spd_' + str(year) + '.npy', spd)

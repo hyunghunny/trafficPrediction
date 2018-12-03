@@ -55,7 +55,8 @@ class JobManager(object):
         self.save_db()
 
     def save_db(self):
-        self.database['jobs'] = self.jobs
+        # XXX: disabled for testing use
+        self.database['jobs'] = [] #self.jobs
         if self.dbm:
             self.dbm.save(self.database)
         else:

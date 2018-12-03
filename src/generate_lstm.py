@@ -30,15 +30,15 @@ def generateTimeSeriesSet(data_type, forecasting_horizon, seq_len, spdDict,
         links = np.load('src/preprocessing/data/linkIds_cx2.npy')
 
     st = tt.time()
-    print "######################################################################################################"
-    print "Start to load data. (data_type: %i, forecasting_horizon: %i, seq_len: %i, temp_type: %s)" %(data_type, forecasting_horizon, seq_len, temp_type)
+    print("######################################################################################################")
+    print("Start to load data. (data_type: %i, forecasting_horizon: %i, seq_len: %i, temp_type: %s)" %(data_type, forecasting_horizon, seq_len, temp_type))
     (train_time, val_time, test_time, train_links, val_links, test_links) = datasetIdx(seed, links, n_train, n_val, n_test)
     (train_x, train_y, train_y_raw) = loadDataset(n_train, spdDict, train_time, train_links, forecasting_horizon, seq_len, temp_type)
     (val_x, val_y, val_y_raw) = loadDataset(n_val, spdDict, val_time, val_links, forecasting_horizon, seq_len, temp_type)
     (test_x, test_y, test_y_raw) = loadDataset(n_test, spdDict, test_time, test_links, forecasting_horizon, seq_len, temp_type)
-    print train_x.shape
-    print "Data loading is completed. (time: %i secs)" %(tt.time() - st)
-    print "######################################################################################################"
+    print(train_x.shape)
+    print("Data loading is completed. (time: %i secs)" %(tt.time() - st))
+    print("######################################################################################################")
 
     return (train_x, train_y, train_y_raw, val_x, val_y, val_y_raw, test_x, test_y, test_y_raw)
 

@@ -83,11 +83,14 @@ def validate(cfg):
                 value_type_name = type(value).__name__
                 if value_type_name == 'unicode':
                     value_type_name = 'str'
-                if value_type_name != conf.type:                    
-                    if not hasattr(conf, 'power_of'):
-                        error(hyperparam + " has invalid type item.")
-                        return False
-
+                
+                if value_type_name != conf.type:
+                    if conf.type == "float" and type(value) == int:
+                        # type can be convertible
+                        pass
+                    elif not hasattr(conf, 'power_of'):
+                        warn(hyperparam + " has invalid type item.")
+                        # check value has convertible to it's own type
     return True
 
 

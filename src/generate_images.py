@@ -113,7 +113,7 @@ def loadData(n_data, times, links, layerIds, spdIds, spdArray, normalizeMatrix, 
             else:
                 result_x.append(np.zeros([1, seq_len]).tolist()[0])
 
-    # print float(count / n_data)
+    # print(float(count / n_data))
     if is_image:
         return np.array(result_x).reshape([n_data, img_size, img_size, seq_len])
     else:
@@ -156,7 +156,7 @@ def loadSpdIdsAndRawDictAndLinks(normalization_opt, data_type):
 def generateImageset(data_type, img_size, forecasting_horizon, seq_len, spdArray,
                      n_train=50000, n_val=10000, n_test=10000, seed=821, traj_opt='all', normalization_opt='raw', temp_type=None):
 
-    print "######################################################################################################"
+    print("######################################################################################################")
     print("Start to load data. (data_type: %i, img_size: %i, forecasting_horizon: %i, seq_len: %i)" %(data_type, img_size, forecasting_horizon, seq_len))
     loading_st = tt.time()
 
@@ -200,10 +200,9 @@ def generateImageset(data_type, img_size, forecasting_horizon, seq_len, spdArray
     (val_y, val_y_raw) = loadLabels(n_val, spdIds, spdArray, spdDict_raw, val_time, val_links)
     (test_y, test_y_raw) = loadLabels(n_test, spdIds, spdArray, spdDict_raw, test_time, test_links)
 
-    print train_x.shape
+    print(train_x.shape) 
     print("End to load data. (time: %i secs)" %(tt.time() - loading_st))
-    print "######################################################################################################"
-
+    print("######################################################################################################")
     return (train_x, np.array(train_y), np.array(train_y_raw), val_x, np.array(val_y), np.array(val_y_raw), test_x, np.array(test_y), np.array(test_y_raw))
 
 
@@ -220,7 +219,7 @@ def loadTargetData(n_data, links, times, forecasting_horizon, seq_len, spdDict, 
 def generateNdVector(data_type, img_size, forecasting_horizon, seq_len, spdArray, spdDict,
                      n_train=50000, n_val=10000, n_test=10000, seed=821, traj_opt='all', normalization_opt='raw', temp_type=None):
 
-    print "######################################################################################################"
+    print( "######################################################################################################")
     print("Start to load data. (data_type: %i, img_size: %i, forecasting_horizon: %i, seq_len: %i)" %(data_type, img_size, forecasting_horizon, seq_len))
     loading_st = tt.time()
 
@@ -251,7 +250,7 @@ def generateNdVector(data_type, img_size, forecasting_horizon, seq_len, spdArray
         val_x = np.dstack([val_x, val_x_part])
         test_x = np.dstack([test_x, test_x_part])
 
-        print(("Layer %i is completed. (time: %i secs)" %(layer, tt.time() - st)))
+        print("Layer %i is completed. (time: %i secs)" %(layer, tt.time() - st))
 
     train_x = np.array(train_x)
     val_x = np.array(val_x)
@@ -261,9 +260,9 @@ def generateNdVector(data_type, img_size, forecasting_horizon, seq_len, spdArray
     (val_y, val_y_raw) = loadLabels(n_val, spdIds, spdArray, spdDict_raw, val_time, val_links)
     (test_y, test_y_raw) = loadLabels(n_test, spdIds, spdArray, spdDict_raw, test_time, test_links)
 
-    print train_x.shape
+    print(train_x.shape)
     print("End to load data. (time: %i secs)" %(tt.time() - loading_st))
-    print "######################################################################################################"
+    print("######################################################################################################")
 
     return (train_x, np.array(train_y), np.array(train_y_raw), val_x, np.array(val_y), np.array(val_y_raw), test_x, np.array(test_y), np.array(test_y_raw))
 

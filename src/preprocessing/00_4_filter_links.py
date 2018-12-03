@@ -32,12 +32,12 @@ for l in links:
     elif criteria_2 > (0.5 * len(dt)):
         del_links += [l]
 
-print len(np.unique(result))
-print np.unique(result)
+print(len(np.unique(result)))
+print(np.unique(result))
 del_links = np.unique(del_links)
-print len(del_links)
+print(len(del_links))
 
 links = [l for l in links if l not in del_links]
-print len(links)
+print(len(links))
 
 np.save('data/all_links_afterFiltering.npy', links)

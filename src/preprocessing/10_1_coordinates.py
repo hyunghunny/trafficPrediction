@@ -39,13 +39,13 @@ for l in links:
             traj.append(findTrajectories(knownCoords[c], knownCoords[c+1]))
         traj = np.unique([x for y in traj for x in y], axis=0)
     else:
-        print l
+        print(l)
     allTraj.update({l: traj})
     knownTraj.update({l: knownCoords})
 
     if len(allTraj) % 100 == 0:
-        print len(allTraj)
-        print tt.time() - st
+        print(len(allTraj))
+        print(tt.time() - st)
 
 np.save('data/knownTraj.npy', knownTraj)
 np.save('data/allTraj.npy', allTraj)

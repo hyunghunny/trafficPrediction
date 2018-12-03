@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 spd = np.load('src/preprocessing/data/spd_augmented_minusWhenAllZero.npy').item()
 links = np.load('src/preprocessing/data/all_links_afterFiltering.npy')
-print len(links)
+print( len(links))
 
 # del_links = []
 # err = []
@@ -47,5 +47,5 @@ data = pd.read_csv('result.csv', index_col=0)
 data['diff'] = data['row1'] - data['row2']
 data['mod'] = data['diff'] % 7
 # print np.unique(data['mod'].values)
-print float(float(data[data['mod'] > 0].shape[0]) / float(data.shape[0]))
-print data.groupby(['LINK_ID']).agg(['count'])
+print( float(float(data[data['mod'] > 0].shape[0]) / float(data.shape[0])))
+print( data.groupby(['LINK_ID']).agg(['count']))

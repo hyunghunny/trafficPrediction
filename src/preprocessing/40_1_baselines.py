@@ -23,7 +23,7 @@ spd = np.load('src/preprocessing/data/spd_interpolated_ignoreErrTimes.npy').item
 #historical average
 result = pd.DataFrame(columns=('baseline', 'mape', 'mae', 'rmse'))
 
-print 'all'
+print( 'all')
 err = []
 truth = []
 for l in range(10000):
@@ -32,10 +32,10 @@ for l in range(10000):
     err.append(np.mean(dt[ha_range]) - dt[test_time[l]])
     truth.append(dt[test_time[l]])
 
-print perfMetrics(err, truth)
+print( perfMetrics(err, truth))
 result.loc[0] = ['all', perfMetrics(err, truth)[0], perfMetrics(err, truth)[1], perfMetrics(err, truth)[2]]
 
-print 'month'
+print( 'month')
 err = []
 truth = []
 for l in range(10000):
@@ -43,40 +43,40 @@ for l in range(10000):
     ha_range = range(test_time[l] - 24*7, max(0, test_time[l]-24*7*4-1), -(24*7))
     err.append(np.mean(dt[ha_range]) - dt[test_time[l]])
     truth.append(dt[test_time[l]])
-print perfMetrics(err, truth)
+print( perfMetrics(err, truth))
 result.loc[1] = ['month', perfMetrics(err, truth)[0], perfMetrics(err, truth)[1], perfMetrics(err, truth)[2]]
 
-print 'week'
+print( 'week')
 err = []
 truth = []
 for l in range(10000):
     dt = spd[test_links[l]]
     err.append((dt[test_time[l] - 24*7]) - dt[test_time[l]])
     truth.append(dt[test_time[l]])
-print perfMetrics(err, truth)
+print( perfMetrics(err, truth))
 result.loc[2] = ['week', perfMetrics(err, truth)[0], perfMetrics(err, truth)[1], perfMetrics(err, truth)[2]]
 
-print 'day'
+print( 'day')
 err = []
 truth = []
 for l in range(10000):
     dt = spd[test_links[l]]
     err.append((dt[test_time[l] - 24]) - dt[test_time[l]])
     truth.append(dt[test_time[l]])
-print perfMetrics(err, truth)
+print( perfMetrics(err, truth))
 result.loc[3] = ['day', perfMetrics(err, truth)[0], perfMetrics(err, truth)[1], perfMetrics(err, truth)[2]]
 
-print 'hour'
+print( 'hour')
 err = []
 truth = []
 for l in range(10000):
     dt = spd[test_links[l]]
     err.append((dt[test_time[l] - 1]) - dt[test_time[l]])
     truth.append(dt[test_time[l]])
-print perfMetrics(err, truth)
+print( perfMetrics(err, truth))
 result.loc[4] = ['hour', perfMetrics(err, truth)[0], perfMetrics(err, truth)[1], perfMetrics(err, truth)[2]]
 
-print 'linear regression'
+print( 'linear regression')
 
 def baseline_LR(spd, train_links, train_times, test_links, test_times, seq_len, forecasting_horizon):
     x = []
@@ -103,11 +103,11 @@ def baseline_LR(spd, train_links, train_times, test_links, test_times, seq_len, 
 
     return (mape, mae, rmse)
 
-print baseline_LR(spd, train_links, train_time, test_links, test_time, 6, 1)
+print( baseline_LR(spd, train_links, train_time, test_links, test_time, 6, 1))
 lr = baseline_LR(spd, train_links, train_time, test_links, test_time, 6, 1)
 result.loc[5] = ['lr', lr[0], lr[1], lr[2]]
 
-print result
+print( result)
 
 # result.to_csv('data/40_1_baseline_result.csv')
 # print result

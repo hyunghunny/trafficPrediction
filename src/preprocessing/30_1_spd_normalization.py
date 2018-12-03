@@ -70,12 +70,12 @@ for clipped in [True, False]:
 
             if clipped:
                 spdArray_limitNormed = np.array(spdArray_limitNormed).squeeze()
-                print spdArray_limitNormed.shape
+                print( spdArray_limitNormed.shape)
                 np.save('data/spdArray_spdLimitNorm_' + str(limitCoef) + '_clipped_' + str(dataType) + '.npy', spdArray_limitNormed)
                 np.save('data/spdIds_spdLimitNorm_' + str(limitCoef) + '_clipped_' + str(dataType) + '.npy', spdIds_rearranged)
             else:
                 spdArray_limitNormed = np.array(spdArray_limitNormed).squeeze()
-                print spdArray_limitNormed.shape
+                print( spdArray_limitNormed.shape)
                 np.save('data/spdArray_spdLimitNorm_' + str(limitCoef) + '_' + str(dataType) + '.npy', spdArray_limitNormed)
                 np.save('data/spdIds_spdLimitNorm_' + str(limitCoef) + '_' + str(dataType) + '.npy', spdIds_rearranged)
 
@@ -148,7 +148,7 @@ for dataType in [2, 3]:
     #
 
     spdArray_limitNormed = np.array(spdArray_limitNormed).squeeze()
-    print spdArray_limitNormed.shape
+    print( spdArray_limitNormed.shape)
 
     np.save('data/spdArray_spdLimitNorm_0_' + str(dataType) + '.npy', np.array(spdArray_limitNormed))
     np.save('data/spdIds_spdLimitNorm_0_' + str(dataType) + '.npy', spdIds_rearranged)

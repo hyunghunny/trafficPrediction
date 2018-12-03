@@ -21,7 +21,7 @@ plt.figure(figsize=(10,10))
 plt.scatter(p['GRS80TM_X'], p['GRS80TM_Y'], s=1)
 plt.savefig('images/00_7_dataScope_gangnam_cx1.png', dpi=244)
 # plt.show()
-print len(np.unique(p['LINK_ID'])) #457
+print(len(np.unique(p['LINK_ID']))) #457
 cx1_links = np.unique(p['LINK_ID'])
 np.save('data/linkIds_cx1.npy', cx1_links)
 
@@ -30,6 +30,6 @@ plt.figure(figsize=(10,10))
 plt.scatter(p['GRS80TM_X'], p['GRS80TM_Y'], s=1)
 plt.savefig('images/00_7_dataScope_guro_cx2.png', dpi=244)
 # plt.show()
-print len(np.unique(p['LINK_ID'])) #589
+print(len(np.unique(p['LINK_ID']))) #589
 cx2_links = np.unique(p['LINK_ID'])
 np.save('data/linkIds_cx2.npy', cx2_links)

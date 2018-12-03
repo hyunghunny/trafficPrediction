@@ -1,0 +1,47 @@
+{
+    "hyperparams": {
+        "data_type": 20,
+        "img_size": 1.0,
+        "img_depth": 0,
+        "forecasting_horizon": 1,                
+        "seq_len":6,
+        "model_type": "lstm",
+
+        "batch_size": 64,
+        "max_epoch": 1,
+
+        "optimizer": "adam",
+        "opt_learningrate": 0.0001,        
+        "batchnorm_on": 0,
+        "dropout_on": 1, 
+        "loss_func": "mean_squared_error",  
+        "earlystop_on": 0,
+        
+        "n_conv_layers": 3,
+        "conv1_depth": 16,
+        "conv2_depth": 32,
+        "conv3_depth": 64,
+        "conv4_depth": 64,
+        "conv5_depth": 64,
+        "conv_fc_units": 128, 
+        "act_conv": "relu",
+        "pooling_on": 1,
+        "pooling_size": 2,
+        "conv_filter_size": 3,        
+        
+        "n_lstm_layers": 1,
+        "lstm_units": 128,
+        "act_lstm": "tanh",
+        "lstm_fc_units": 20,
+        
+        "n_fc_layers": 20,        
+        "last_fc_units": 20,  
+        "temp_type": "default",
+        "traj_opt": "all",
+        "normalization_opt": "raw"
+    },
+    "dataset": "Seoul city traffic data",
+    "model": "RNN variants",
+    "config": { 
+    }    
+}

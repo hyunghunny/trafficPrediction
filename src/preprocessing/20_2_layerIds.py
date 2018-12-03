@@ -193,5 +193,5 @@ for r in [2, 5, 20, 50]:
             st = tt.time()
             saveLayerIds(links, localIds, data_type, th, traj_opt, r)
             print("###########################################")
-            print r
-            print 'Type %i is completed. (TIME: %i seconds)' %(data_type, tt.time()-st)
+            print( r)
+            print( 'Type %i is completed. (TIME: %i seconds)' %(data_type, tt.time()-st))

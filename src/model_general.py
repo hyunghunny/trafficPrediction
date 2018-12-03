@@ -67,7 +67,7 @@ class EpochHistory(Callback):
         self.losses.append(logs.get('loss'))
 
         self.perf.loc[epoch] = [epoch, val[0], val[1], val[2], test[0], test[1], test[2], tt.time() - self.st]
-        # print self.model.evaluate(self.trainimage, self.lossY, verbose=0) # loss..
+        # print(self.model.evaluate(self.trainimage, self.lossY, verbose=0)) # loss..
         run_time = tt.time() - self.st
         cur_loss = self.losses[-1]
         print('### EPOCH %i / TIME %.1f ### loss %.3f // validation %.3f %.3f %.3f // test %.3f %.3f %.3f' %(

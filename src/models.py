@@ -97,7 +97,7 @@ def nd_lstm_model(EXP_NO, data_type, img_size, spdDict, forecasting_horizon, seq
 
     model = Model(inputs=[input], outputs=res)
     opt = Adam(lr=opt_learningrate, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=1e-06)
-    # print model.summary()
+    # print(model.summary())
 
     model.compile(loss=loss_func, optimizer=opt)
     history = EpochHistory(valimage=valimage, valY=valY_raw, testimage=testimage, testY=testY_raw, valLimits=valLimits, testLimits=testLimits, log_filepath=str(EXP_NO), normalized=normalized)

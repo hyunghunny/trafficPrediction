@@ -16,7 +16,7 @@ links = np.load('src/preprocessing/data/all_links.npy')
 
 augSpd = {}
 for year in [2014, 2015, 2016, 2017, 2018]:
-    print year
+    print( year)
     spd = np.load('src/preprocessing/data/spd_' + str(year) + '_minusWhenAllZero.npy').item()
 
     # print len(spd[spd.keys()[0]]) #8760, 8760, 8784(2.29), 8760, 7296

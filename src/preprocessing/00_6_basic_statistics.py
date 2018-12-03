@@ -109,7 +109,7 @@ def perfMetrics(err, truth):
 # print perfMetrics(err, truth)
 #
 #ha_month
-print 'month'
+print( 'month')
 err = []
 truth = []
 for l in range(len(links)):
@@ -122,11 +122,11 @@ for l in range(len(links)):
             err.append(np.mean(dt[ha_range]) - dt[t])
             truth.append(dt[t])
 
-print perfMetrics(err, truth)
+print(perfMetrics(err, truth))
 
 
 #ha: all
-print 'all'
+print( 'all')
 err = []
 truth = []
 for l in range(len(links)):
@@ -136,4 +136,4 @@ for l in range(len(links)):
             ha_range = range((t-24*7), 0, -(24*7))
             err.append(np.mean(dt[ha_range]) - dt[t])
             truth.append(dt[t])
-print perfMetrics(err, truth)
+print(perfMetrics(err, truth))

@@ -22,10 +22,10 @@ christmasIdx = timeIndex[(timeIndex['year'] == 2018) & (timeIndex['month'] == 1)
 # normalIdx_3 = timeIndex[(timeIndex['year'] == 2014) & (timeIndex['month'] == 12) & (timeIndex['day'] == 25)].index
 # christmasIdx = timeIndex[(timeIndex['year'] == 2015) & (timeIndex['month'] == 1) & (timeIndex['day'] == 1)].index
 
-print normalIdx_1[0] / 24
-print normalIdx_2[0] / 24
-print normalIdx_3[0] / 24
-print christmasIdx
+print( normalIdx_1[0] / 24)
+print( normalIdx_2[0] / 24)
+print( normalIdx_3[0] / 24)
+print( christmasIdx)
 
 # for l in links[116:117]:
     # print spd[l][normalIdx_1]

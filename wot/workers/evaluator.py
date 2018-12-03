@@ -26,7 +26,7 @@ class FunctionEvaluator(Worker):
 
     def set_exec_func(self, eval_func, args):
         self.eval_func = eval_func
-        self.config = {"obj_func": eval_func.func_name,
+        self.config = {"obj_func": eval_func.__name__,
                         "param_order" : args}
 
     def get_cur_result(self):

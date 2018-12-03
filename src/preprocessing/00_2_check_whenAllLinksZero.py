@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 links = np.load('data/all_links.npy')
-# print len(links)
+# print( len(links))
 
 def checkWhenAllZeros(speedDict, links):
     data = []
@@ -15,14 +15,14 @@ def checkWhenAllZeros(speedDict, links):
 # spd = np.load('src/preprocessing/data/spd_2016.npy').item()
 
 for year in [2014, 2015, 2016, 2017, 2018]:
-    print '######'
-    print year
+    print( '######')
+    print( year)
     spd = np.load('src/preprocessing/data/spd_' + str(year) + '.npy').item()
     idx = checkWhenAllZeros(spd, links)
-    print len(idx)
+    print( len(idx))
 
     times = pd.date_range(start='1/1/' + str(year), end='1/1/' + str(year+1), closed='left', freq='1H')
-    print times[idx]
+    print( times[idx])
 
     consecutive_idx = []
     for i in idx:

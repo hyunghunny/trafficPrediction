@@ -17,7 +17,6 @@ from wot.workers.evaluator import *
 
 
 from wot.utils.logger import *
-import wot.utils.hp_cfg as hp_cfg
 
 DEFAULT_DEBUG_MODE = False
 
@@ -25,13 +24,13 @@ job_manager = None
 
 
 def wait_job_request(eval_job,  
-                    enable_debug=DEFAULT_DEBUG_MODE,
+                    debug_mode=DEFAULT_DEBUG_MODE,
                     port=5000, 
                     enable_surrogate=False):
     
     global job_manager
 
-    if enable_debug:
+    if debug_mode:
         set_log_level('debug')
 
     ej = eval_job()
@@ -49,7 +48,7 @@ def wait_job_request(eval_job,
     api.add_resource(Job, "/jobs/<string:job_id>", 
                     resource_class_kwargs={'job_manager': job_manager})
 
-    app.run(host='0.0.0.0', port=port, debug=enable_debug)
+    app.run(host='0.0.0.0', port=port, debug=debug_mode)
 
 
 def eval_task(eval_func):
@@ -68,6 +67,7 @@ def update_working_result(cur_epoch, cur_loss, run_time):
         job_manager.update_epoch_result(cur_epoch, cur_loss, run_time)
     else:
         warn("Job manager is not ready to serve.")
+
 
 def stop_working_job():
     if job_manager != None:
